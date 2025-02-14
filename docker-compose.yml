@@ -1,0 +1,16 @@
+services:
+  proxy:
+    image: ubuntu/squid
+    ports:
+      - "3128:3128"
+      - "3129:3129"
+    volumes:
+      - ./squid.conf:/etc/squid/squid.conf
+      - ./passwords:/etc/squid/passwords
+      #- ./squid/keys:/etc/squid3/ssl
+      #- /etc/letsencrypt:/etc/letsencrypt
+      #- ./log:/var/log
+      #- ./squid/data/cache:/var/spool/squid
+    restart: always
+    environment:
+      TZ: Asia/Taipei
